@@ -17,6 +17,11 @@ export const toolbox = {
   contents: [
     {
       kind: 'category',
+      name: 'Satellite',
+      categorystyle: 'logic_category',
+    },
+    {
+      kind: 'category',
       name: 'Logic',
       categorystyle: 'logic_category',
       contents: [
