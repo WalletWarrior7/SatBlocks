@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import {Order} from 'blockly/javascript';
+import {javascriptGenerator, Order} from 'blockly/javascript';
 import * as Blockly from 'blockly/core';
 
 // Export all the code generators for our custom blocks,
@@ -32,3 +32,10 @@ forBlock['add_text'] = function (
   const code = `${addText}(${text});\n`;
   return code;
 };
+
+javascriptGenerator.forBlock['send_command'] = function(block, generator) {
+  const statement_command = generator.statementToCode(block, 'COMMAND');
+  
+  const code = '...';
+  return code;
+}
