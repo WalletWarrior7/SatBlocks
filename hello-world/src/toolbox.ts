@@ -19,6 +19,19 @@ export const toolbox = {
       kind: 'category',
       name: 'Satellite',
       categorystyle: 'logic_category',
+      contents: [
+        {
+          kind: 'category',
+          name: 'Commands',
+          colour: '225',
+          contents: [
+            {
+              kind: 'block',
+              type: 'send_command',
+            },
+          ],
+        },
+      ]
     },
     {
       kind: 'category',

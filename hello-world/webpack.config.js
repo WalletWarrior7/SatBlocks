@@ -30,13 +30,16 @@ const config = {
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
+    fallback: {
+      vm: false,
+    },
   },
   plugins: [
     // Generate the HTML index page based on our template.
     // This will output the same index page with the bundle we
     // created above added in a script tag.
     new HtmlWebpackPlugin({
-      template: 'src/index.html',
+      template: 'public/index.html',
     }),
   ],
 };

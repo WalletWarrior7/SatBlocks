@@ -9,7 +9,15 @@ export declare const toolbox: {
         kind: string;
         name: string;
         categorystyle: string;
-        contents?: undefined;
+        contents: {
+            kind: string;
+            name: string;
+            colour: string;
+            contents: {
+                kind: string;
+                type: string;
+            }[];
+        }[];
         custom?: undefined;
     } | {
         kind: string;

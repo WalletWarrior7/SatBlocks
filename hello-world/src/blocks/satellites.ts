@@ -1,13 +1,16 @@
 import * as Blockly from 'blockly/core';
 
-Blockly.Blocks['send_command'] = {
-    init: function() {
-        this.appendStatementInput('COMMAND')
-        .setCheck('String')
-        .appendField('Send Command');
-        this.setNextStatement(true, null);
-        this.setTooltip('');
-        this.setHelpUrl('');
-        this.setColour(225);
+export const blocks = {
+    'send_command': {
+        init: function (this: Blockly.Block) {
+            this.appendStatementInput('COMMAND')
+            .setCheck('String')
+            .appendField('Send Command');
+            this.setPreviousStatement(true, null)
+            this.setNextStatement(true, null);
+            this.setTooltip('');
+            this.setHelpUrl('');
+            this.setColour(225);
+        }
     }
 }

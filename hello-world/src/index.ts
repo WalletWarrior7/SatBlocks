@@ -6,15 +6,41 @@
 
 import * as Blockly from 'blockly';
 import {blocks} from './blocks/text';
+import {blocks as satBlocks} from './blocks/satellites';
 import {forBlock} from './generators/javascript';
 import {javascriptGenerator} from 'blockly/javascript';
 import {save, load} from './serialization';
 import {toolbox} from './toolbox';
 import './index.css';
+import Interpreter from 'js-interpreter';
 
 // Register the blocks and generator with Blockly
-Blockly.common.defineBlocks(blocks);
+Blockly.common.defineBlocks({
+  ...blocks,
+  ...satBlocks
+});
 Object.assign(javascriptGenerator.forBlock, forBlock);
+
+function initApi(interpreter: any, globalObject: any) {
+  interpreter.setProperty(
+    globalObject,
+    'addText',
+    interpreter.createNativeFunction((text: string) => {
+      if (!outputDiv) return;
+      const p = document.createElement('p');
+      p.innerText = String(text);
+      outputDiv.appendChild(p);
+    }),
+  );
+
+  interpreter.setProperty(
+    globalObject,
+    'sendCommand',
+    interpreter.createNativeFunction((command: string) => {
+      console.log('Command:', command);
+    }),
+  );
+}
 
 // Set up UI elements and inject Blockly
 const codeDiv = document.getElementById('generatedCode')?.firstChild;
@@ -38,7 +64,8 @@ const runCode = () => {
   // Wrap `eval` in a `try/catch` so that any runtime errors are
   // logged to the console, instead of failing quietly.
   try {
-    eval(code);
+    const myInterpreter = new Interpreter(code, initApi);
+    myInterpreter.run();
   } catch (error) {
     console.log(error);
   }
