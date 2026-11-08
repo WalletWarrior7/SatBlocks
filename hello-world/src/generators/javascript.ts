@@ -19,7 +19,7 @@ forBlock['add_text'] = function (block: Blockly.Block, generator: Blockly.CodeGe
 
 javascriptGenerator.forBlock['send_command'] = function(block, generator) {
   const statement_command = generator.statementToCode(block, 'COMMAND');
-  
-  const code = 'console.log("getStatus()");\n';
+
+  const code = 'getStatus();\n';
   return code;
 }

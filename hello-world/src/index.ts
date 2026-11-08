@@ -24,20 +24,9 @@ Object.assign(javascriptGenerator.forBlock, forBlock);
 function initApi(interpreter: any, globalObject: any) {
   interpreter.setProperty(
     globalObject,
-    'addText',
-    interpreter.createNativeFunction((text: string) => {
-      if (!outputDiv) return;
-      const p = document.createElement('p');
-      p.innerText = String(text);
-      outputDiv.appendChild(p);
-    }),
-  );
-
-  interpreter.setProperty(
-    globalObject,
-    'sendCommand',
-    interpreter.createNativeFunction((command: string) => {
-      console.log('Command:', command);
+    'getStatus',
+    interpreter.createNativeFunction(() => {
+      console.log("Status Ok");
     }),
   );
 }
