@@ -9,10 +9,12 @@ import {blocks} from './blocks/text';
 import {blocks as satBlocks} from './blocks/satellites';
 import {forBlock} from './generators/javascript';
 import {javascriptGenerator} from 'blockly/javascript';
-import {save, load} from './serialization';
+// For persistence
+// import {save, load} from './serialization';
 import {toolbox} from './toolbox';
 import './index.css';
 import Interpreter from 'js-interpreter';
+import { sendCommand } from './satellites/satfunctions'
 
 // Register the blocks and generator with Blockly
 Blockly.common.defineBlocks({
@@ -24,9 +26,9 @@ Object.assign(javascriptGenerator.forBlock, forBlock);
 function initApi(interpreter: any, globalObject: any) {
   interpreter.setProperty(
     globalObject,
-    'getStatus',
-    interpreter.createNativeFunction(() => {
-      console.log("Status Ok");
+    'sendCommand',
+    interpreter.createNativeFunction((command : string) => {
+      return sendCommand(command);
     }),
   );
 }
@@ -55,6 +57,9 @@ const runCode = () => {
   try {
     const myInterpreter = new Interpreter(code, initApi);
     myInterpreter.run();
+
+    const value = myInterpreter.getProperty(myInterpreter.globalObject, 'status2');
+  console.log('status2 =', value);
   } catch (error) {
     console.log(error);
   }
@@ -62,9 +67,10 @@ const runCode = () => {
 
 if (ws) {
   // Load the initial state from storage and run the code.
-  load(ws);
+  // load(ws);
   runCode();
 
+  /*
   // Every time the workspace changes state, save the changes to storage.
   ws.addChangeListener((e: Blockly.Events.Abstract) => {
     // UI events are things like scrolling, zooming, etc.
@@ -72,6 +78,7 @@ if (ws) {
     if (e.isUiEvent) return;
     save(ws);
   });
+  */
 
   // Whenever the workspace changes meaningfully, run the code again.
   ws.addChangeListener((e: Blockly.Events.Abstract) => {
