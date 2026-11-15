@@ -3,5 +3,8 @@ export declare const blocks: {
     send_command: {
         init: (this: Blockly.Block) => void;
     };
+    encrypt_input: {
+        init: (this: Blockly.Block) => void;
+    };
 };
 //# sourceMappingURL=satellites.d.ts.map

@@ -31,6 +31,24 @@ export const toolbox = {
             },
           ],
         },
+        {
+          kind: 'category',
+          name: 'Packet Builders',
+          colour: '50',
+          contents: [
+          ],
+        },
+        {
+          kind: 'category',
+          name: 'Cryptography',
+          colour: '180',
+          contents: [
+            {
+              kind: 'block',
+              type: 'encrypt_input',
+            },
+          ],
+        },
       ]
     },
     {

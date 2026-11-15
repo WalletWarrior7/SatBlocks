@@ -12,5 +12,17 @@ export const blocks = {
             this.setHelpUrl('');
             this.setColour(225);
         }
+    },
+    'encrypt_input': {
+        init: function (this: Blockly.Block) {
+            this.appendValueInput('INPUT')
+            .setCheck('String')
+            .appendField('Encrypt Input');
+            this.setOutput(true, 'String');
+            this.setInputsInline(true);
+            this.setTooltip('');
+            this.setHelpUrl('');
+            this.setColour(180);
+        }
     }
 }

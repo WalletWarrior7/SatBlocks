@@ -23,3 +23,10 @@ javascriptGenerator.forBlock['send_command'] = function(block, generator) {
   const code = `sendCommand(${command})`;
   return [code, Order.FUNCTION_CALL];
 }
+
+javascriptGenerator.forBlock['encrypt_input'] = function(block, generator) {
+  const input = generator.valueToCode(block, 'INPUT', Order.NONE);
+
+  const code = `caesarEncrypt(${input}, 7)`;
+  return [code, Order.FUNCTION_CALL];
+}

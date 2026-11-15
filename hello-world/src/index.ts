@@ -14,7 +14,7 @@ import {javascriptGenerator} from 'blockly/javascript';
 import {toolbox} from './toolbox';
 import './index.css';
 import Interpreter from 'js-interpreter';
-import { sendCommand } from './satellites/satfunctions'
+import { SatFunctions } from './satellites/satfunctions'
 
 // Register the blocks and generator with Blockly
 Blockly.common.defineBlocks({
@@ -24,11 +24,20 @@ Blockly.common.defineBlocks({
 Object.assign(javascriptGenerator.forBlock, forBlock);
 
 function initApi(interpreter: any, globalObject: any) {
+  const sat = new SatFunctions();
+
   interpreter.setProperty(
     globalObject,
     'sendCommand',
     interpreter.createNativeFunction((command : string) => {
-      return sendCommand(command);
+      return sat.sendCommand(command);
+    }),
+  );
+  interpreter.setProperty(
+    globalObject,
+    'caesarEncrypt',
+    interpreter.createNativeFunction((input : string, shift : number) => {
+      return sat.caesarEncrypt(input, shift);
     }),
   );
 }
@@ -57,9 +66,6 @@ const runCode = () => {
   try {
     const myInterpreter = new Interpreter(code, initApi);
     myInterpreter.run();
-
-    const value = myInterpreter.getProperty(myInterpreter.globalObject, 'status2');
-  console.log('status2 =', value);
   } catch (error) {
     console.log(error);
   }

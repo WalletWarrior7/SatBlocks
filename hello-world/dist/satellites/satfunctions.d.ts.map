@@ -1,1 +1,1 @@
-{"version":3,"file":"satfunctions.d.ts","sourceRoot":"","sources":["../../src/satellites/satfunctions.ts"],"names":[],"mappings":"AAEA,wBAAgB,WAAW,CAAC,OAAO,EAAG,MAAM,UAS3C"}
+{"version":3,"file":"satfunctions.d.ts","sourceRoot":"","sources":["../../src/satellites/satfunctions.ts"],"names":[],"mappings":"AAAA,qBAAa,YAAY;IACrB,WAAW,CAAC,OAAO,EAAG,MAAM;IAY5B,aAAa,CAAC,IAAI,EAAE,MAAM,EAAE,KAAK,EAAE,MAAM,GAAG,MAAM;IAIlD,aAAa,CAAC,IAAI,EAAE,MAAM,EAAE,KAAK,EAAE,MAAM,GAAG,MAAM;CAGrD"}
