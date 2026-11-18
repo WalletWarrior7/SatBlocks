@@ -42,6 +42,7 @@ export const blocks = {
             this.setColour(180);
         }
     },
+
     'get_status': {
         init: function (this: Blockly.Block) {
             this.appendValueInput('PAYLOAD')
@@ -52,5 +53,18 @@ export const blocks = {
             this.setHelpUrl('');
             this.setColour(225);
         }
-    }
+    },
+
+    'set_data': {
+        init: function (this: Blockly.Block) {
+            this.appendDummyInput('DATA')
+            .appendField('Set Data')
+            .appendField(new Blockly.FieldTextInput('Enter Data'), 'DATA');
+            this.setPreviousStatement(true, null);
+            this.setNextStatement(true, null);
+            this.setTooltip('');
+            this.setHelpUrl('');
+            this.setColour(15);
+        }
+    },
 }

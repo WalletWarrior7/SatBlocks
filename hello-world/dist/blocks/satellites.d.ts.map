@@ -1,1 +1,1 @@
-{"version":3,"file":"satellites.d.ts","sourceRoot":"","sources":["../../src/blocks/satellites.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,OAAO,MAAM,cAAc,CAAC;AAExC,eAAO,MAAM,MAAM;;qBA+BW,OAAO,CAAC,KAAK;;;qBAYb,OAAO,CAAC,KAAK;;CAW1C,CAAA"}
+{"version":3,"file":"satellites.d.ts","sourceRoot":"","sources":["../../src/blocks/satellites.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,OAAO,MAAM,cAAc,CAAC;AAExC,eAAO,MAAM,MAAM;;qBA+BW,OAAO,CAAC,KAAK;;;qBAab,OAAO,CAAC,KAAK;;;qBAYb,OAAO,CAAC,KAAK;;CAU1C,CAAA"}

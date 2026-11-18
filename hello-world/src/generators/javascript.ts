@@ -55,3 +55,12 @@ javascriptGenerator.forBlock['get_status'] = function(block, generator) {
   const code = `sendPacket(${JSON.stringify(packet)})`;
   return [code, Order.FUNCTION_CALL];
 }
+
+
+/* Blocks for building a Space Packet */
+//
+javascriptGenerator.forBlock['set_data'] = function(block, generator) {
+  const data = block.getFieldValue('DATA');
+
+  return data;
+}

@@ -46,6 +46,32 @@ export const toolbox = {
           name: 'Packet Builders',
           colour: '50',
           contents: [
+            {
+              kind: 'category',
+              name: 'Primary Header',
+              colour: '40',
+              contents: [
+                {
+                  kind: 'block',
+                  type: 'set_version'
+                },
+                {
+                  kind: 'block',
+                  type: 'set_sequence_count'
+                },
+              ]
+            },
+            {
+              kind: 'category',
+              name: 'Data Field',
+              colour: '30',
+              contents: [
+                {
+                  kind: 'block',
+                  type: 'set_data'
+                },
+              ]
+            }
           ],
         },
         {

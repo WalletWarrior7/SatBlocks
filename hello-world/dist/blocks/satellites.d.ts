@@ -6,5 +6,8 @@ export declare const blocks: {
     get_status: {
         init: (this: Blockly.Block) => void;
     };
+    set_payload: {
+        init: (this: Blockly.Block) => void;
+    };
 };
 //# sourceMappingURL=satellites.d.ts.map
