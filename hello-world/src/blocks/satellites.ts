@@ -44,7 +44,8 @@ export const blocks = {
     },
     'get_status': {
         init: function (this: Blockly.Block) {
-            this.appendDummyInput('get_status')
+            this.appendValueInput('PAYLOAD')
+            .setCheck('String')
             .appendField('Get Status');
             this.setOutput(true, null);
             this.setTooltip('');

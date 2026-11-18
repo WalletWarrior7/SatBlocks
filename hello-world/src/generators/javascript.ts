@@ -45,10 +45,13 @@ javascriptGenerator.forBlock['encrypt_payload'] = function(block, generator) {
 
 // Assembles the packet for the telemetry get status and sends it
 javascriptGenerator.forBlock['get_status'] = function(block, generator) {
+  // Get the input type to see if payload should be encrypted
+  const target = block.getInputTargetBlock('PAYLOAD');
   const packet : SpacePacket = {
     priHeader : {version : 0, isTelecommand : false, sequenceCount : 0},
-    data : { isEncrypted : false, payload : "getStatus"}
+    data : { isEncrypted : target?.type === 'encrypt_payload' ? true : false, payload : "getStatus"}
   }
+
   const code = `sendPacket(${JSON.stringify(packet)})`;
   return [code, Order.FUNCTION_CALL];
 }
