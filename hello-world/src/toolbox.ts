@@ -25,9 +25,19 @@ export const toolbox = {
           name: 'Commands',
           colour: '225',
           contents: [
+            /*
             {
               kind: 'block',
               type: 'send_command',
+            },
+            {
+              kind: 'block',
+              type: 'request_telemetry',
+            },
+            */
+            {
+              kind: 'block',
+              type: 'get_status'
             },
           ],
         },
@@ -45,7 +55,7 @@ export const toolbox = {
           contents: [
             {
               kind: 'block',
-              type: 'encrypt_input',
+              type: 'encrypt_payload',
             },
           ],
         },

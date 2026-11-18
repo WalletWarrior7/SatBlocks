@@ -1,9 +1,9 @@
 import * as Blockly from 'blockly/core';
 export declare const blocks: {
-    send_command: {
+    encrypt_payload: {
         init: (this: Blockly.Block) => void;
     };
-    encrypt_input: {
+    get_status: {
         init: (this: Blockly.Block) => void;
     };
 };

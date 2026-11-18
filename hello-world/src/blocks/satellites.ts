@@ -1,6 +1,8 @@
 import * as Blockly from 'blockly/core';
 
 export const blocks = {
+    
+    /*
     'send_command': {
         init: function (this: Blockly.Block) {
             this.appendValueInput('COMMAND')
@@ -13,16 +15,41 @@ export const blocks = {
             this.setColour(225);
         }
     },
-    'encrypt_input': {
+
+    'request_telemetry': {
         init: function (this: Blockly.Block) {
-            this.appendValueInput('INPUT')
+            this.appendValueInput('TELEMETRY')
             .setCheck('String')
-            .appendField('Encrypt Input');
+            .appendField('Request Telemetry');
+            this.setOutput(true, 'String');
+            this.setInputsInline(true);
+            this.setTooltip('');
+            this.setHelpUrl('');
+            this.setColour(225);
+        }
+    },
+    */
+
+    'encrypt_payload': {
+        init: function (this: Blockly.Block) {
+            this.appendValueInput('PAYLOAD')
+            .setCheck('String')
+            .appendField('Encrypt Payload');
             this.setOutput(true, 'String');
             this.setInputsInline(true);
             this.setTooltip('');
             this.setHelpUrl('');
             this.setColour(180);
+        }
+    },
+    'get_status': {
+        init: function (this: Blockly.Block) {
+            this.appendDummyInput('get_status')
+            .appendField('Get Status');
+            this.setOutput(true, null);
+            this.setTooltip('');
+            this.setHelpUrl('');
+            this.setColour(225);
         }
     }
 }

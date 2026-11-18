@@ -15,6 +15,7 @@ import {toolbox} from './toolbox';
 import './index.css';
 import Interpreter from 'js-interpreter';
 import { SatFunctions } from './satellites/satfunctions'
+import { SpacePacket } from "./satellites/spacePacket";
 
 // Register the blocks and generator with Blockly
 Blockly.common.defineBlocks({
@@ -28,11 +29,13 @@ function initApi(interpreter: any, globalObject: any) {
 
   interpreter.setProperty(
     globalObject,
-    'sendCommand',
-    interpreter.createNativeFunction((command : string) => {
-      return sat.sendCommand(command);
+    'sendPacket',
+    interpreter.createNativeFunction((packet : SpacePacket) => {
+      const nativePacket = interpreter.pseudoToNative(packet) as SpacePacket;
+      return sat.receivePacket(nativePacket);
     }),
   );
+  
   interpreter.setProperty(
     globalObject,
     'caesarEncrypt',
