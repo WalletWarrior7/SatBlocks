@@ -45,12 +45,18 @@ export class SatFunctions {
         }
     }
 
-    public caesarEncrypt(text: string, shift: number): string {
-        return caesarShift(text, shift);
+    public caesarEncrypt(payload : string | SpacePacket, shift : number) : string {
+        if (typeof payload === "string") {
+            return caesarShift(payload, shift);
+        }
+        return caesarShift(payload.data.payload, shift);
     }
 
-    public caesarDecrypt(text: string, shift: number): string {
-        return caesarShift(text, -shift);
+    public caesarDecrypt(payload : string | SpacePacket, shift : number) : string {
+        if (typeof payload === "string") {
+            return caesarShift(payload, -shift);
+        }
+        return caesarShift(payload.data.payload, -shift);
     }
 
     private receiveCommand(command : String) {
@@ -100,10 +106,10 @@ export class SatFunctions {
 }
 
 // Simple encryption cipher
-function caesarShift(text: string, shift: number): string {
+function caesarShift(payload : string, shift : number) : string {
   const s = ((shift % 26) + 26) % 26;
 
-  return text.replace(/[a-z]/gi, (char) => {
+  return payload.replace(/[a-z]/gi, (char) => {
     const base = char <= 'Z' ? 65 : 97;
     return String.fromCharCode(((char.charCodeAt(0) - base + s) % 26) + base);
   });

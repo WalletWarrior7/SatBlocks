@@ -6,7 +6,7 @@ export declare const blocks: {
     get_status: {
         init: (this: Blockly.Block) => void;
     };
-    set_payload: {
+    set_data: {
         init: (this: Blockly.Block) => void;
     };
 };

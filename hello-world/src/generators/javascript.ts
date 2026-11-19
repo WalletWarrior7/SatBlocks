@@ -52,7 +52,13 @@ javascriptGenerator.forBlock['get_status'] = function(block, generator) {
     data : { isEncrypted : target?.type === 'encrypt_payload' ? true : false, payload : "getStatus"}
   }
 
-  const code = `sendPacket(${JSON.stringify(packet)})`;
+  let code;
+  if (packet.data.isEncrypted) {
+    code = `sendPacket(caesarEncrypt(${JSON.stringify(packet)}))`;
+  }
+  else {
+    code = `sendPacket(${JSON.stringify(packet)})`;
+  }
   return [code, Order.FUNCTION_CALL];
 }
 

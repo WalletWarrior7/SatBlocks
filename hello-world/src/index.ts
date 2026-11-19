@@ -39,7 +39,10 @@ function initApi(interpreter: any, globalObject: any) {
   interpreter.setProperty(
     globalObject,
     'caesarEncrypt',
-    interpreter.createNativeFunction((input : string, shift : number) => {
+    interpreter.createNativeFunction((input : string | SpacePacket, shift : number) => {
+      if (!(typeof input === "string")) {
+        input = interpreter.pseudoToNative(input) as SpacePacket;
+      }
       return sat.caesarEncrypt(input, shift);
     }),
   );
