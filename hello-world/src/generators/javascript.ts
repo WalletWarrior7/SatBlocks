@@ -54,7 +54,7 @@ javascriptGenerator.forBlock['get_status'] = function(block, generator) {
 
   let code;
   if (packet.data.isEncrypted) {
-    code = `sendPacket(caesarEncrypt(${JSON.stringify(packet)}))`;
+    code = `sendPacket(encryptPacket(${JSON.stringify(packet)}, 7))`;
   }
   else {
     code = `sendPacket(${JSON.stringify(packet)})`;
@@ -68,5 +68,19 @@ javascriptGenerator.forBlock['get_status'] = function(block, generator) {
 javascriptGenerator.forBlock['set_data'] = function(block, generator) {
   const data = block.getFieldValue('DATA');
 
-  return data;
+  if (data === "Enter Data") {
+    return '';
+  }
+
+  return "payload : \"" + data + "\" }";
+}
+
+javascriptGenerator.forBlock['set_data'] = function(block, generator) {
+  const data = block.getFieldValue('DATA');
+
+  if (data === "Enter Data") {
+    return '';
+  }
+
+  return "payload : \"" + data + "\" }";
 }

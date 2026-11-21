@@ -32,9 +32,8 @@ export const blocks = {
 
     'encrypt_payload': {
         init: function (this: Blockly.Block) {
-            this.appendValueInput('PAYLOAD')
-            .setCheck('String')
-            .appendField('Encrypt Payload');
+            this.appendDummyInput('PAYLOAD')
+            .appendField('Encrypt Payload')
             this.setOutput(true, 'String');
             this.setInputsInline(true);
             this.setTooltip('');

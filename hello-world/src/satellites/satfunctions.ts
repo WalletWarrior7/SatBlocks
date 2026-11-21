@@ -45,6 +45,16 @@ export class SatFunctions {
         }
     }
 
+    public encryptPacket(packet : SpacePacket, shift : number) {
+        return {
+            ...packet,
+            data: {
+                isEncrypted: true,
+                payload: caesarShift(packet.data.payload, shift),
+            },
+    };
+}
+
     public caesarEncrypt(payload : string | SpacePacket, shift : number) : string {
         if (typeof payload === "string") {
             return caesarShift(payload, shift);

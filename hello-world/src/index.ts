@@ -46,6 +46,15 @@ function initApi(interpreter: any, globalObject: any) {
       return sat.caesarEncrypt(input, shift);
     }),
   );
+  
+  interpreter.setProperty(
+    globalObject,
+    'encryptPacket',
+    interpreter.createNativeFunction((packet: any, shift: number) => {
+      const nativePacket = interpreter.pseudoToNative(packet) as SpacePacket;
+      return interpreter.nativeToPseudo(sat.encryptPacket(nativePacket, shift));
+    }),
+  );
 }
 
 // Set up UI elements and inject Blockly

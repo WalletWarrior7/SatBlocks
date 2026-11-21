@@ -19,8 +19,8 @@ export declare class SatFunctions {
     battery1: battery;
     battery2: battery;
     receivePacket(packet: SpacePacket): void;
-    caesarEncrypt(text: string, shift: number): string;
-    caesarDecrypt(text: string, shift: number): string;
+    caesarEncrypt(payload: string | SpacePacket, shift: number): string;
+    caesarDecrypt(payload: string | SpacePacket, shift: number): string;
     private receiveCommand;
     private sendTelemetry;
     private getStatus;
